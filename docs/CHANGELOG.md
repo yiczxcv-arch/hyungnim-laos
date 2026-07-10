@@ -62,13 +62,13 @@ master
 
 # LAST COMPLETED WORK
 
-docs/02~06, CHANGELOG.md 저장 및 충돌 점검
+Sprint 1-2: HOME YouTube/Review Section 추가로 02_UI_UX_BLUEPRINT.md PAGE STRUCTURE 완성
 
-ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 라우트 스캐폴드
+Sprint 1-2: Contact CTA를 Review 다음/Footer 직전으로 재배치
 
-Sprint 1-1: HOME Foundation (Header, Hero, Main Services, Footer, Mobile Bottom Navigation) 구현
+Sprint 1-2: CONTACT 폼 문의내용 필수값 버그 수정(친절한 한글 오류 문구 + 포커스 이동)
 
-Pretendard 폰트 적용, 고정 라이트 컬러 토큰 적용(다크모드 제거)
+Sprint 1-2: eco/ktv/golf/pool-villa/contact/review/admin 다크모드·구버튼 색상 정리
 
 Build PASS
 
@@ -84,6 +84,12 @@ src/app/globals.css
 
 src/app/fonts.ts
 
+src/app/admin/page.tsx
+
+src/app/review/page.tsx
+
+src/app/contact/page.tsx
+
 src/components/header.tsx
 
 src/components/footer.tsx
@@ -91,6 +97,8 @@ src/components/footer.tsx
 src/components/ServiceCard.tsx
 
 src/components/MobileBottomNav.tsx
+
+src/components/EmptyState.tsx
 
 src/components/container.tsx
 
@@ -100,7 +108,7 @@ src/components/contact-form.tsx
 
 src/lib/site-config.ts
 
-src/app/{eco,ktv,golf,pool-villa,contact,review,admin}/page.tsx
+src/app/{eco,ktv,golf,pool-villa}/page.tsx
 
 package.json / package-lock.json (pretendard 추가)
 
@@ -126,23 +134,22 @@ PASS
 
 # CURRENT ISSUES
 
-- CONTACT 폼의 "문의내용" 필드에 required 속성 누락 (FEATURE_SPEC FORM 요구사항과 불일치, CONTACT가 스코프에 포함되는 다음 Sprint에서 수정 필요)
-- ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 페이지는 아직 다크모드 클래스(dark:) 및 구 버튼 색상 체계가 남아있음 (이번 Sprint 범위는 HOME만 해당, 해당 페이지들은 각자 Sprint에서 정리 예정)
-- Hero Image/Video 영역은 실제 자산 없이 placeholder만 구현됨 (실제 이미지/영상 자산 필요)
+- Hero Image/Video 영역, YouTube 대표/보조 영상 카드는 실제 자산 없이 placeholder만 구현됨 (실제 이미지/영상/채널 URL 확보 필요)
+- 유튜브 채널 이동 CTA는 실제 채널 URL이 없어 비활성(disabled) 버튼으로만 구현됨 — URL 확보 시 실제 링크로 교체 필요
+- ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 페이지의 버튼 라벨은 FEATURE_SPEC BUTTON 표준 문구와 아직 완전히 일치하지 않음(이번 Sprint는 색상/스타일만 수정, 콘텐츠 재작성은 범위 밖)
+- REVIEW 페이지(/review) 본문은 FEATURE_SPEC의 정확한 빈 상태 문구("등록된 후기가 없습니다.")로 아직 갱신되지 않음(이번 Sprint는 콘텐츠 재작성 금지 범위였음, HOME 내 신규 Review 섹션에는 해당 문구 적용됨)
 
 ---
 
 # TODO
 
-Main Services 카드 콘텐츠 보강(실제 자산 확보 후)
+Hero/YouTube 실제 이미지·영상·채널 URL 확보 후 교체
 
-YouTube Section 제작
+실제 후기 데이터 연동(등록되는 대로)
 
-Review Section 제작
+ECO/KTV/GOLF/POOL VILLA 등 서비스 페이지 콘텐츠 보강
 
-ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 페이지 UI_UX_BLUEPRINT 기준 정리(색상 고정, 버튼 라벨 표준화)
-
-CONTACT 폼 필수값 버그 수정
+/review 페이지 본문을 FEATURE_SPEC 표준 빈 상태 문구로 정리(별도 Sprint)
 
 ---
 
@@ -150,15 +157,15 @@ CONTACT 폼 필수값 버그 수정
 
 Priority 1
 
-HOME: YouTube Section, Review Section 추가
+ECO 페이지 콘텐츠/이미지 보강 (FEATURE_SPEC ECO PAGE 요구사항 충족)
 
 Priority 2
 
-ECO 페이지 UI_UX_BLUEPRINT/FEATURE_SPEC 기준 재정비
+/review 페이지 본문 표준화 및 Review 데이터 구조 준비
 
 Priority 3
 
-CONTACT 폼 필수값 버그 수정
+Hero/YouTube 실제 미디어 자산 연동
 
 ---
 
@@ -178,11 +185,15 @@ Main Services
 
 YouTube
 
-⬜
+✅ (실제 자산 대기, 구조만 완성)
 
 Review
 
-⬜
+✅ (실제 자산 대기, 구조만 완성)
+
+Contact CTA
+
+✅
 
 Footer
 
@@ -198,7 +209,7 @@ Mobile Bottom Navigation
 
 HOME
 
-진행중 (Header/Hero/Main Services/Footer/Mobile Bottom Navigation 완료, YouTube/Review 섹션 대기)
+완료 (Header/Hero/Main Services/YouTube/Review/Contact CTA/Footer/Mobile Bottom Navigation 구조 완성, 실제 미디어·후기 데이터는 대기)
 
 ECO
 
@@ -262,9 +273,10 @@ CURRENT ISSUES 섹션 참조
 
 # NOTES
 
-- 04_DATABASE_API.md는 컴포넌트 파일명을 PascalCase(Header.tsx 등)로 규정하나, 06_CLAUDE_RULES_QA.md는 "기존 네이밍 규칙 유지"를 명시 — 두 문서 간 상충으로 기존 파일(header.tsx, footer.tsx 등)은 kebab-case를 유지하고, 이번 Sprint에서 신규 생성한 컴포넌트(ServiceCard.tsx, MobileBottomNav.tsx)만 PascalCase로 작성함.
+- 04_DATABASE_API.md는 컴포넌트 파일명을 PascalCase(Header.tsx 등)로 규정하나, 06_CLAUDE_RULES_QA.md는 "기존 네이밍 규칙 유지"를 명시 — 두 문서 간 상충으로 기존 파일(header.tsx, footer.tsx 등)은 kebab-case를 유지하고, 신규 생성 컴포넌트(ServiceCard.tsx, MobileBottomNav.tsx, EmptyState.tsx)만 PascalCase로 작성함.
 - "Mobile Bottom Navigation"은 02_UI_UX_BLUEPRINT.md 원문에 명시되지 않은 패턴이며, Sprint 1-1 작업 지시에 따라 추가됨.
-- Hero Image/Video 영역은 실제 이미지/영상 없이 레이아웃만 예약(placeholder)한 상태.
+- YouTube 채널 이동 CTA는 실제 URL이 없어 임의 링크를 생성하지 않고 비활성 버튼으로 구현(DO NOT: 가짜 데이터/허위 링크 금지 준수).
+- Review 섹션은 실제 후기 데이터 대신 FEATURE_SPEC 명시 문구("등록된 후기가 없습니다.")로 빈 상태만 표시, 가짜 후기 생성하지 않음.
 
 ---
 
@@ -278,6 +290,8 @@ CURRENT ISSUES 섹션 참조
 - ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 라우트 및 공용 컴포넌트 스캐폴드
 - Sprint 1-1: HOME Foundation 구현 (Header, Hero, Main Services, Footer, Mobile Bottom Navigation)
 - Pretendard 폰트 적용, 고정 라이트 컬러 토큰 적용
+- Sprint 1-2: HOME YouTube/Review Section 추가, Contact CTA 재배치로 PAGE STRUCTURE 완성
+- Sprint 1-2: CONTACT 폼 필수값 버그 수정, eco/ktv/golf/pool-villa/contact/review/admin 색상 정리
 
 ### 수정 파일
 
@@ -299,7 +313,7 @@ PASS
 
 ### 다음 작업
 
-HOME YouTube / Review Section 구현
+ECO 페이지 콘텐츠/이미지 보강, /review 페이지 본문 표준화
 
 ---
 
