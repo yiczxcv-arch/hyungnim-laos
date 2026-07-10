@@ -62,7 +62,9 @@ master
 
 # LAST COMPLETED WORK
 
-Sprint 1-3: HOME Final Polish — 모바일 코드 레벨 점검, Section/Button 토큰 통일, Service Button 라벨 표준화, Review 빈 상태 정리, Hero/YouTube Placeholder 완성
+Sprint 2: HOME Design Implementation — design/home/KakaoTalk_20260710_221034102.png(승인 시안)을 기준으로 HOME 전면 재구성. Header 로고 락업, Hero 풀블리드 구성, "오늘 올라온 영상" 가로 스크롤(신규), Main Service 원형 카드, Community 섹션(신규, 이번 Sprint 승인), YouTube 2단 레이아웃, Review 헤더 개선, Final CTA 다크바, Mobile Bottom Nav 아이콘화(5탭). 실제 데이터가 없는 항목은 전부 Placeholder/비활성 처리(가짜 통계·후기·링크 미생성).
+
+Playwright(스크래치패드에 임시 설치, 프로젝트 의존성 아님)로 390px 실제 스크린샷 확보 및 검증.
 
 Build PASS
 
@@ -70,15 +72,23 @@ Build PASS
 
 # MODIFIED FILES
 
-src/app/page.tsx
+src/app/page.tsx (전면 재작성)
 
-src/app/review/page.tsx
+src/app/globals.css
 
-src/components/header.tsx
+src/components/header.tsx (로고 락업 추가, 높이 h-20)
 
-src/components/service-page.tsx
+src/components/ServiceCard.tsx (텍스트 카드 → 원형 이미지 카드)
 
-src/components/EmptyState.tsx
+src/components/MobileBottomNav.tsx (아이콘화, 5탭, 마이페이지→문의 대체)
+
+src/components/icons.tsx (신규 — 공용 인라인 SVG 아이콘 세트)
+
+src/components/ReviewCard.tsx (신규 — 컴포넌트만 준비, 페이지에는 미사용)
+
+src/lib/site-config.ts (nameKo 추가, 서비스 tagline 축약)
+
+design/home/KakaoTalk_20260710_221034102.png (승인 시안, 신규)
 
 docs/CHANGELOG.md
 
@@ -102,22 +112,26 @@ PASS
 
 # CURRENT ISSUES
 
-- Hero Image/Video 영역, YouTube 대표/보조 영상 카드는 실제 자산 없이 placeholder만 구현됨 (실제 이미지/영상/채널 URL 확보 필요)
-- 유튜브 채널 이동 CTA는 실제 채널 URL이 없어 비활성(disabled) 버튼으로만 구현됨 — URL 확보 시 실제 링크로 교체 필요
-- 390/375/430px 모바일 검수는 브라우저/스크린샷 도구가 없는 환경 특성상 코드 레벨 감사(고정 폭/nowrap/grid 안전성 점검)로 대체함 — 실기기·브라우저 육안 확인 권장
-- ECO/KTV/GOLF/POOL VILLA 서비스 페이지 자체 콘텐츠(소개 문구, 이미지)는 여전히 최소 상태
+- Header 로고는 실제 로고 파일이 없어 텍스트 락업("형님라오스" + "HYUNGNIM LAOS") + 단순 원형 이니셜("형") placeholder로 구현됨 — 실제 로고 파일 확보 시 교체 필요
+- Hero 배경, 오늘 올라온 영상 3개, YouTube 대표/보조 영상 전부 placeholder — 실제 이미지/영상 자산 필요
+- 카카오톡 형님방 CTA, 유튜브 채널 CTA는 실제 URL이 없어 비활성 버튼으로만 구현
+- Community 섹션 통계(참여중/오늘 대화/오늘 후기/오늘 예약)는 실제 데이터가 없어 "-"로 표시 중 — 실시간 카운트 연동 필요(향후 API/DB 단계)
+- Mobile Bottom Nav에서 시안의 "마이페이지" 탭은 실제 페이지가 없어 "문의(CONTACT)"로 대체함 — 실제 마이페이지/회원 기능이 필요하면 별도 승인 필요(FEATURE_SPEC 범위 밖, 새 기능)
+- ECO/KTV/GOLF/POOL VILLA 서비스 상세 페이지는 이번 Sprint 범위 밖(HOME만 진행) — 여전히 최소 상태
 
 ---
 
 # TODO
 
-Hero/YouTube 실제 이미지·영상·채널 URL 확보 후 교체
+Header/Hero/오늘의 영상/YouTube 실제 이미지·영상·로고 자산 확보 후 교체
 
-실제 후기 데이터 연동(등록되는 대로)
+카카오톡 형님방·유튜브 채널 실제 URL 확보 후 CTA 활성화
 
-ECO/KTV/GOLF/POOL VILLA 등 서비스 페이지 콘텐츠 보강
+실시간 통계(참여자 수 등) 연동 방식 결정(API/DB 단계에서)
 
-390/375/430px 실기기 육안 검수(가능한 환경에서)
+ECO/KTV/GOLF/POOL VILLA 페이지에도 동일 디자인 시스템 적용(design/eco 등 시안 도착 시)
+
+마이페이지 탭 관련 PM 의사결정 필요(신규 기능 여부)
 
 ---
 
@@ -125,15 +139,15 @@ ECO/KTV/GOLF/POOL VILLA 등 서비스 페이지 콘텐츠 보강
 
 Priority 1
 
-ECO 페이지 콘텐츠/이미지 보강 (FEATURE_SPEC ECO PAGE 요구사항 충족)
+design/eco, design/ktv, design/golf, design/pool-villa 시안 도착 시 동일 방식으로 구현
 
 Priority 2
 
-Hero/YouTube 실제 미디어 자산 연동
+Header 로고, Hero, YouTube 실제 미디어 자산 연동
 
 Priority 3
 
-REVIEW 데이터 구조(타입) 준비 및 실제 후기 연동 설계
+Community 실시간 통계 및 카카오톡 링크, REVIEW 데이터 구조 연동 설계(향후 API/DB 단계)
 
 ---
 
@@ -141,27 +155,35 @@ REVIEW 데이터 구조(타입) 준비 및 실제 후기 연동 설계
 
 Header
 
-✅
+✅ (승인 시안 반영, 로고 자산만 대기)
 
 Hero
 
-✅
+✅ (승인 시안 반영, 이미지 자산만 대기)
+
+오늘 올라온 영상
+
+✅ (신규, 승인 시안 반영, 영상 자산만 대기)
 
 Main Services
 
-✅
+✅ (원형 카드로 전환, 승인 시안 반영)
+
+Community
+
+✅ (신규, 이번 Sprint 승인, 실시간 데이터만 대기)
 
 YouTube
 
-✅ (실제 자산 대기, 구조만 완성)
+✅ (2단 레이아웃으로 전환, 승인 시안 반영)
 
 Review
 
-✅ (실제 자산 대기, 구조만 완성)
+✅ (헤더 스타일 개선, 실제 후기 데이터 대기)
 
-Contact CTA
+Final CTA
 
-✅
+✅ (다크 바 스타일로 전환, 승인 시안 반영)
 
 Footer
 
@@ -169,11 +191,7 @@ Footer
 
 Mobile Bottom Navigation
 
-✅
-
-Spacing/Typography/Button 통일
-
-✅
+✅ (아이콘화, 5탭 — 마이페이지 항목은 문의로 대체)
 
 ---
 
@@ -181,7 +199,7 @@ Spacing/Typography/Button 통일
 
 HOME
 
-완료 (구조·스타일 통일 완료, 실제 미디어·후기 데이터만 대기 — 데이터 연동 전까지는 이 상태가 "완성")
+완료 (승인 시안 기준 디자인 구현 완료 — 실제 로고·이미지·영상·통계·후기 데이터만 대기)
 
 ECO
 
@@ -245,14 +263,17 @@ CURRENT ISSUES 섹션 참조
 
 # NOTES
 
-- 04_DATABASE_API.md는 컴포넌트 파일명을 PascalCase(Header.tsx 등)로 규정하나, 06_CLAUDE_RULES_QA.md는 "기존 네이밍 규칙 유지"를 명시 — 두 문서 간 상충으로 기존 파일(header.tsx, footer.tsx 등)은 kebab-case를 유지하고, 신규 생성 컴포넌트(ServiceCard.tsx, MobileBottomNav.tsx, EmptyState.tsx)만 PascalCase로 작성함.
+- 04_DATABASE_API.md는 컴포넌트 파일명을 PascalCase(Header.tsx 등)로 규정하나, 06_CLAUDE_RULES_QA.md는 "기존 네이밍 규칙 유지"를 명시 — 두 문서 간 상충으로 기존 파일(header.tsx, footer.tsx 등)은 kebab-case를 유지하고, 신규 생성 컴포넌트(ServiceCard.tsx, MobileBottomNav.tsx, EmptyState.tsx, ReviewCard.tsx, icons.tsx)만 PascalCase/lowercase 유틸 규칙으로 작성함.
 - "Mobile Bottom Navigation"은 02_UI_UX_BLUEPRINT.md 원문에 명시되지 않은 패턴이며, Sprint 1-1 작업 지시에 따라 추가됨.
-- YouTube 채널 이동 CTA는 실제 URL이 없어 임의 링크를 생성하지 않고 비활성 버튼으로 구현(DO NOT: 가짜 데이터/허위 링크 금지 준수).
-- Review 섹션은 실제 후기 데이터 대신 FEATURE_SPEC 명시 문구("등록된 후기가 없습니다.")로 빈 상태만 표시, 가짜 후기 생성하지 않음.
-- Sprint 1-3에서 버튼 스케일을 h-12/px-6/rounded-full/text-base로 통일하고 hover+active 상태를 모든 인터랙티브 CTA에 추가. Header 상담하기 버튼만 nav-tier(text-sm)로 의도적으로 예외 유지(로고 text-lg, nav 링크 text-sm과 같은 눈높이 맞춤). ServiceCard 카드 내부 "서비스 보기 →" 마이크로링크도 컴팩트 카드 폭(2열 그리드) 유지를 위해 의도적으로 예외.
-- Service 페이지(ECO/KTV/GOLF/POOL VILLA) 공용 CTA 라벨을 "상담 문의하기" → "문의하기"로 표준화(FEATURE_SPEC BUTTON Primary 어휘 준수).
-- Hero/YouTube Placeholder를 공용 EmptyState 컴포넌트로 통일(중복 마크업 제거), overflow-hidden 추가로 추후 실제 이미지/영상 삽입 시 레이아웃 안정성 확보.
-- 390/375/430px 실측 스크린샷은 브라우저 도구 부재로 제공 불가 — 코드 레벨(고정폭/nowrap/grid) 감사로 대체.
+- Sprint 2에서 전달받은 파일명은 실제로 `design/home/KakaoTalk_20260710_221034102.png`였음(지시문의 `home-mobile-final.png`와 불일치) — 해당 파일을 시안으로 사용함.
+- "Community(카카오톡 형님방)" 섹션은 02_UI_UX_BLUEPRINT.md 원문 PAGE STRUCTURE에 없던 신규 섹션이나, Sprint 2에서 PM이 명시적으로 승인한 추가 사항으로 처리함.
+- 시안 이미지의 실시간 통계(1,842명 등), 오늘 영상 제목/재생시간, YouTube 조회수, 후기 카드(이름/별점/내용)는 전부 디자이너의 예시 데이터였음 — DO NOT(가짜 데이터·가짜 후기·가짜 통계 생성 금지) 규칙에 따라 실제 값 대신 "-"/"준비 중"/빈 상태로 대체 구현함. 레이아웃과 스타일만 시안과 동일하게 유지.
+- 시안의 Main Service 아이콘 배지 중 "에코 시스템 = 카페·마사지·스파"로 보이는 표기는 PROJECT_MASTER의 ECO 서비스 정의(국제교류·연애·결혼 상담, 성적 서비스 알선 제외)와 상충하여 반영하지 않음 — 기존 ECO 정의와 태그라인을 유지함(우선순위: PROJECT_MASTER > 시안 디테일).
+- Mobile Bottom Nav의 시안 5번째 탭 "마이페이지"는 존재하지 않는 페이지라 "문의(CONTACT)"로 대체함(새 페이지 추가 금지 준수). GOLF는 시안과 동일하게 하단 네비에서 제외(상단/서비스 섹션에는 그대로 유지).
+- Header 로고는 실제 로고 파일이 없어 텍스트 락업 + 단순 이니셜 원형 배지로 구현(IMAGE RULE: AI 느낌의 이미지 생성 금지, 실물 자산 도착 시 교체 필요).
+- 카카오톡 형님방 CTA, 유튜브 채널 CTA는 실제 URL이 없어 비활성 버튼으로 구현(임의 링크 생성 금지 준수). Final CTA의 카카오톡 상담/전화 상담하기 버튼도 실제 채널/전화번호가 없어 둘 다 /contact로 연결함.
+- Review 섹션은 실제 후기 데이터 대신 FEATURE_SPEC 명시 문구("등록된 후기가 없습니다.")로 빈 상태만 표시. ReviewCard.tsx 컴포넌트는 시안 디자인대로 준비해 두었으나 실제 데이터가 없어 페이지에는 사용하지 않음.
+- 390px 스크린샷은 이번 Sprint부터 스크래치패드에 Playwright를 임시 설치(프로젝트 package.json에는 추가하지 않음)해 실제 렌더링 결과로 확보함.
 
 ---
 
@@ -270,6 +291,8 @@ CURRENT ISSUES 섹션 참조
 - Sprint 1-2: CONTACT 폼 필수값 버그 수정, eco/ktv/golf/pool-villa/contact/review/admin 색상 정리
 - Sprint 1-3: 모바일 코드 레벨 점검(375/390/430px), Section/Button 스타일 토큰 통일(spacing, size, padding, radius, hover, active)
 - Sprint 1-3: Service Button 라벨 표준화("문의하기"), /review 페이지 FEATURE_SPEC 빈 상태 문구 적용, Hero/YouTube Placeholder를 EmptyState로 통일
+- Sprint 2: design/home 승인 시안 기준 HOME 전면 재구성(Header/Hero/오늘의 영상/Main Service/Community/YouTube/Review/Final CTA/Mobile Bottom Nav), 실제 데이터 없는 항목은 전부 placeholder/비활성 처리
+- Sprint 2: Playwright로 390px 실제 스크린샷 확보, Hero placeholder 텍스트가 체크리스트와 겹치는 문제 발견 후 즉시 수정
 
 ### 수정 파일
 
@@ -291,7 +314,7 @@ PASS
 
 ### 다음 작업
 
-ECO 페이지 콘텐츠/이미지 보강, Hero/YouTube 실제 미디어 자산 연동
+design/eco 등 나머지 서비스 페이지 시안 도착 시 동일 방식 적용, 실제 로고·이미지·영상 자산 연동
 
 ---
 

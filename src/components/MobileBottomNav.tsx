@@ -2,12 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BuildingIcon, ChatIcon, HomeIcon, LeafIcon, MicIcon } from "@/components/icons";
 
 const items = [
-  { label: "HOME", href: "/" },
-  { label: "ECO", href: "/eco" },
-  { label: "KTV", href: "/ktv" },
-  { label: "CONTACT", href: "/contact" },
+  { label: "홈", href: "/", icon: HomeIcon },
+  { label: "KTV", href: "/ktv", icon: MicIcon },
+  { label: "풀빌라", href: "/pool-villa", icon: BuildingIcon },
+  { label: "에코시스템", href: "/eco", icon: LeafIcon },
+  { label: "문의", href: "/contact", icon: ChatIcon },
 ];
 
 export function MobileBottomNav() {
@@ -18,14 +20,16 @@ export function MobileBottomNav() {
       <div className="flex h-16">
         {items.map((item) => {
           const active = pathname === item.href;
+          const Icon = item.icon;
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-1 flex-col items-center justify-center gap-1 text-xs font-medium ${
+              className={`flex flex-1 flex-col items-center justify-center gap-1 text-[11px] font-medium ${
                 active ? "text-amber-600" : "text-neutral-500"
               }`}
             >
+              <Icon className="h-5 w-5" />
               {item.label}
             </Link>
           );

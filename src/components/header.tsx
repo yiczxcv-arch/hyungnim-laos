@@ -5,9 +5,24 @@ import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { mainNav, siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/container";
+import { ChatIcon } from "@/components/icons";
 
 const navCta =
-  "flex h-12 items-center justify-center rounded-full bg-amber-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-amber-600 active:bg-amber-700";
+  "flex h-11 items-center gap-1.5 rounded-full border border-amber-500 bg-white px-5 text-sm font-semibold text-amber-600 transition-colors hover:bg-amber-50 active:bg-amber-100";
+
+function Logo({ onClick }: { onClick?: () => void }) {
+  return (
+    <Link href="/" className="flex items-center gap-2.5" onClick={onClick}>
+      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-base font-bold text-amber-600">
+        형
+      </span>
+      <span className="flex flex-col leading-none">
+        <span className="text-base font-bold tracking-tight text-neutral-900">{siteConfig.nameKo}</span>
+        <span className="mt-1 text-[10px] font-semibold tracking-[0.2em] text-amber-600">{siteConfig.name}</span>
+      </span>
+    </Link>
+  );
+}
 
 export function Header() {
   const [open, setOpen] = useState(false);
@@ -15,10 +30,8 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur">
-      <Container className="flex h-16 items-center justify-between">
-        <Link href="/" className="text-lg font-bold tracking-tight text-neutral-900" onClick={() => setOpen(false)}>
-          {siteConfig.name}
-        </Link>
+      <Container className="flex h-20 items-center justify-between">
+        <Logo onClick={() => setOpen(false)} />
 
         <nav className="hidden items-center gap-6 md:flex">
           {mainNav.map((item) => {
@@ -37,31 +50,32 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="flex items-center gap-2">
           <Link href="/contact" className={navCta}>
+            <ChatIcon className="h-4 w-4" />
             상담하기
           </Link>
-        </div>
 
-        <button
-          type="button"
-          aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="flex h-11 w-11 items-center justify-center rounded-full md:hidden"
-        >
-          <span className="relative block h-4 w-6">
-            <span
-              className={`absolute left-0 top-0 block h-0.5 w-6 bg-neutral-900 transition-transform duration-300 ease-out ${open ? "translate-y-[7px] rotate-45" : ""}`}
-            />
-            <span
-              className={`absolute left-0 top-[7px] block h-0.5 w-6 bg-neutral-900 transition-opacity duration-200 ease-out ${open ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`absolute left-0 top-[14px] block h-0.5 w-6 bg-neutral-900 transition-transform duration-300 ease-out ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
-            />
-          </span>
-        </button>
+          <button
+            type="button"
+            aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="flex h-11 w-11 items-center justify-center rounded-full md:hidden"
+          >
+            <span className="relative block h-4 w-6">
+              <span
+                className={`absolute left-0 top-0 block h-0.5 w-6 bg-neutral-900 transition-transform duration-300 ease-out ${open ? "translate-y-[7px] rotate-45" : ""}`}
+              />
+              <span
+                className={`absolute left-0 top-[7px] block h-0.5 w-6 bg-neutral-900 transition-opacity duration-200 ease-out ${open ? "opacity-0" : ""}`}
+              />
+              <span
+                className={`absolute left-0 top-[14px] block h-0.5 w-6 bg-neutral-900 transition-transform duration-300 ease-out ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
+              />
+            </span>
+          </button>
+        </div>
       </Container>
 
       <nav
@@ -86,9 +100,6 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link href="/contact" onClick={() => setOpen(false)} className={`mt-2 ${navCta}`}>
-              상담하기
-            </Link>
           </Container>
         </div>
       </nav>
