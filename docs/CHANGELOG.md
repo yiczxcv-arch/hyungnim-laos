@@ -34,8 +34,6 @@ Deployment
 
 운영 중인 단계만 표시한다.
 
-예)
-
 ✅ Development
 
 ---
@@ -50,25 +48,27 @@ Version
 
 # CURRENT BRANCH
 
-main
+master
+
+(주의: 템플릿 기본값은 main이나 실제 저장소는 create-next-app 기본값인 master 사용 중 — 브랜치명 변경은 PM 확인 후 진행)
 
 ---
 
 # LAST UPDATE
 
-YYYY-MM-DD
+2026-07-11
 
 ---
 
 # LAST COMPLETED WORK
 
-예)
+docs/02~06, CHANGELOG.md 저장 및 충돌 점검
 
-HOME Header 완료
+ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 라우트 스캐폴드
 
-Hero 완료
+Sprint 1-1: HOME Foundation (Header, Hero, Main Services, Footer, Mobile Bottom Navigation) 구현
 
-Footer 완료
+Pretendard 폰트 적용, 고정 라이트 컬러 토큰 적용(다크모드 제거)
 
 Build PASS
 
@@ -76,15 +76,35 @@ Build PASS
 
 # MODIFIED FILES
 
-예)
+src/app/layout.tsx
 
-app/page.tsx
+src/app/page.tsx
 
-components/Header.tsx
+src/app/globals.css
 
-components/Footer.tsx
+src/app/fonts.ts
 
-lib/site-config.ts
+src/components/header.tsx
+
+src/components/footer.tsx
+
+src/components/ServiceCard.tsx
+
+src/components/MobileBottomNav.tsx
+
+src/components/container.tsx
+
+src/components/service-page.tsx
+
+src/components/contact-form.tsx
+
+src/lib/site-config.ts
+
+src/app/{eco,ktv,golf,pool-villa,contact,review,admin}/page.tsx
+
+package.json / package-lock.json (pretendard 추가)
+
+docs/02_UI_UX_BLUEPRINT.md ~ docs/06_CLAUDE_RULES_QA.md, docs/CHANGELOG.md
 
 ---
 
@@ -106,31 +126,23 @@ PASS
 
 # CURRENT ISSUES
 
-현재 발견된 문제
-
-없음
-
-또는
-
-예)
-
-Hero 모바일 간격 수정 필요
+- CONTACT 폼의 "문의내용" 필드에 required 속성 누락 (FEATURE_SPEC FORM 요구사항과 불일치, CONTACT가 스코프에 포함되는 다음 Sprint에서 수정 필요)
+- ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 페이지는 아직 다크모드 클래스(dark:) 및 구 버튼 색상 체계가 남아있음 (이번 Sprint 범위는 HOME만 해당, 해당 페이지들은 각자 Sprint에서 정리 예정)
+- Hero Image/Video 영역은 실제 자산 없이 placeholder만 구현됨 (실제 이미지/영상 자산 필요)
 
 ---
 
 # TODO
 
-다음 작업
-
-예)
-
-HOME Hero 개선
-
-Main Services 제작
+Main Services 카드 콘텐츠 보강(실제 자산 확보 후)
 
 YouTube Section 제작
 
 Review Section 제작
+
+ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 페이지 UI_UX_BLUEPRINT 기준 정리(색상 고정, 버튼 라벨 표준화)
+
+CONTACT 폼 필수값 버그 수정
 
 ---
 
@@ -138,15 +150,15 @@ Review Section 제작
 
 Priority 1
 
-...
+HOME: YouTube Section, Review Section 추가
 
 Priority 2
 
-...
+ECO 페이지 UI_UX_BLUEPRINT/FEATURE_SPEC 기준 재정비
 
 Priority 3
 
-...
+CONTACT 폼 필수값 버그 수정
 
 ---
 
@@ -162,7 +174,7 @@ Hero
 
 Main Services
 
-⬜
+✅
 
 YouTube
 
@@ -174,7 +186,11 @@ Review
 
 Footer
 
-⬜
+✅
+
+Mobile Bottom Navigation
+
+✅
 
 ---
 
@@ -182,7 +198,7 @@ Footer
 
 HOME
 
-진행중
+진행중 (Header/Hero/Main Services/Footer/Mobile Bottom Navigation 완료, YouTube/Review 섹션 대기)
 
 ECO
 
@@ -240,39 +256,32 @@ Production
 
 # KNOWN ISSUES
 
-현재 알려진 문제
-
-없으면
-
-None
+CURRENT ISSUES 섹션 참조
 
 ---
 
 # NOTES
 
-추가 메모
+- 04_DATABASE_API.md는 컴포넌트 파일명을 PascalCase(Header.tsx 등)로 규정하나, 06_CLAUDE_RULES_QA.md는 "기존 네이밍 규칙 유지"를 명시 — 두 문서 간 상충으로 기존 파일(header.tsx, footer.tsx 등)은 kebab-case를 유지하고, 이번 Sprint에서 신규 생성한 컴포넌트(ServiceCard.tsx, MobileBottomNav.tsx)만 PascalCase로 작성함.
+- "Mobile Bottom Navigation"은 02_UI_UX_BLUEPRINT.md 원문에 명시되지 않은 패턴이며, Sprint 1-1 작업 지시에 따라 추가됨.
+- Hero Image/Video 영역은 실제 이미지/영상 없이 레이아웃만 예약(placeholder)한 상태.
 
 ---
 
 # DAILY LOG
 
-## YYYY-MM-DD
+## 2026-07-11
 
 ### 작업
 
--
-
--
-
--
+- docs/02_UI_UX_BLUEPRINT.md ~ docs/06_CLAUDE_RULES_QA.md, docs/CHANGELOG.md 저장 및 단계별 충돌 점검
+- ECO/KTV/GOLF/POOL VILLA/CONTACT/REVIEW/ADMIN 라우트 및 공용 컴포넌트 스캐폴드
+- Sprint 1-1: HOME Foundation 구현 (Header, Hero, Main Services, Footer, Mobile Bottom Navigation)
+- Pretendard 폰트 적용, 고정 라이트 컬러 토큰 적용
 
 ### 수정 파일
 
--
-
--
-
--
+- MODIFIED FILES 섹션 참조
 
 ### 검증
 
@@ -290,13 +299,7 @@ PASS
 
 ### 다음 작업
 
-...
-
----
-
-## YYYY-MM-DD
-
-...
+HOME YouTube / Review Section 구현
 
 ---
 
