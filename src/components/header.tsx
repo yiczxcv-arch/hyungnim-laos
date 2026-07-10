@@ -6,6 +6,9 @@ import { usePathname } from "next/navigation";
 import { mainNav, siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/container";
 
+const navCta =
+  "flex h-12 items-center justify-center rounded-full bg-amber-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-amber-600 active:bg-amber-700";
+
 export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -35,10 +38,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <Link
-            href="/contact"
-            className="flex h-12 items-center rounded-full bg-amber-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-amber-600"
-          >
+          <Link href="/contact" className={navCta}>
             상담하기
           </Link>
         </div>
@@ -86,11 +86,7 @@ export function Header() {
                 </Link>
               );
             })}
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 flex h-12 items-center justify-center rounded-full bg-amber-500 text-base font-semibold text-white transition-colors hover:bg-amber-600"
-            >
+            <Link href="/contact" onClick={() => setOpen(false)} className={`mt-2 ${navCta}`}>
               상담하기
             </Link>
           </Container>

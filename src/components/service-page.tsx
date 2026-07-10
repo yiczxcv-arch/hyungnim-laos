@@ -19,9 +19,9 @@ export function ServicePage({ eyebrow, title, intro, highlights, disclaimer }: S
           <p className="mt-4 max-w-xl text-neutral-500">{intro}</p>
           <Link
             href="/contact"
-            className="mt-6 flex h-12 w-fit items-center rounded-full bg-amber-500 px-6 text-sm font-semibold text-white transition-colors hover:bg-amber-600"
+            className="mt-6 flex h-12 w-fit items-center justify-center rounded-full bg-amber-500 px-6 text-base font-semibold text-white transition-colors hover:bg-amber-600 active:bg-amber-700"
           >
-            상담 문의하기
+            문의하기
           </Link>
         </Container>
       </section>
