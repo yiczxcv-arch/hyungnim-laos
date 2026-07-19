@@ -15,23 +15,31 @@ import {
 import {
   BadgeIcon,
   CameraIcon,
+  ChatIcon,
   CheckMiniIcon,
   ChevronRightIcon,
   NewspaperIcon,
-  PhoneIcon,
   PlayIcon,
   StarIcon,
+  TelegramIcon,
   YoutubeIcon,
 } from "@/components/icons";
 
 const heroChecklist = ["현지 직접 운영", "실제 방문 후기", "카카오톡 · 텔레그램 상담", "직접 예약 진행"];
+
+const trustBar = [
+  { label: "라오스 현지 직접 운영", icon: BadgeIcon },
+  { label: "한국어 상담", icon: ChatIcon },
+  { label: "실제 방문 후기", icon: StarIcon },
+  { label: "카카오톡 · 텔레그램 상담", icon: TelegramIcon },
+];
 
 function SectionMore({ href, label = "더보기" }: { href?: string; label?: string }) {
   if (href) {
     return (
       <Link
         href={href}
-        className="flex items-center gap-0.5 text-sm font-medium text-neutral-500 transition-colors hover:text-amber-600"
+        className="flex items-center gap-0.5 text-sm font-medium text-neutral-500 transition-colors duration-300 hover:text-amber-600"
       >
         {label}
         <ChevronRightIcon className="h-4 w-4" />
@@ -88,11 +96,22 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent sm:from-black/70" />
         </div>
 
-        <Container className="relative aspect-[864/400]">
+        <Container className="relative aspect-[864/520] sm:aspect-[864/400]">
           <div className="absolute left-4 top-[16px] flex w-[235px] flex-col sm:left-0">
             <p className="text-[10px] font-semibold leading-none text-amber-400">현지에서 직접 운영합니다</p>
             <h1 className="mt-[6px] text-[32px] font-bold leading-none tracking-tight">{siteConfig.nameKo}</h1>
-            <p className="mt-[5px] text-[12px] leading-none text-white/90">라오스 현지 예약 · 여행 파트너</p>
+
+            <p className="mt-[6px] text-[13px] leading-tight font-semibold text-white">
+              라오스 현지 예약, 한 번에 해결
+            </p>
+            <p className="mt-[3px] text-[11px] leading-tight font-medium text-amber-400">
+              KTV · 풀빌라 · 에코동행 · 골프
+            </p>
+            <p className="mt-[3px] text-[10px] leading-snug text-white/75">
+              한국어 상담부터 예약까지
+              <br />
+              현지에서 직접 진행합니다.
+            </p>
 
             <ul className="mt-[8px] flex flex-col gap-[6px]">
               {heroChecklist.map((item) => (
@@ -104,6 +123,21 @@ export default function Home() {
                 </li>
               ))}
             </ul>
+
+            <div className="mt-[10px] flex items-center gap-[6px]">
+              <Link
+                href="/contact"
+                className="flex h-[26px] items-center justify-center rounded-full bg-amber-500 px-[10px] text-[10px] font-semibold text-white transition-colors duration-300 hover:bg-amber-400"
+              >
+                상담하기
+              </Link>
+              <a
+                href="#services"
+                className="flex h-[26px] items-center justify-center rounded-full border border-white/40 px-[10px] text-[10px] font-semibold text-white transition-colors duration-300 hover:border-amber-400 hover:text-amber-400"
+              >
+                서비스 둘러보기
+              </a>
+            </div>
           </div>
 
           <div className="absolute right-2 top-2 flex w-[124px] items-center gap-2 rounded-[11px] bg-black/70 p-2 backdrop-blur sm:right-0 sm:top-[128px] sm:w-[188px] sm:gap-[10px] sm:p-[11px]">
@@ -119,6 +153,20 @@ export default function Home() {
               <PlayIcon className="h-[11px] w-[11px] translate-x-0.5 text-white sm:h-[13px] sm:w-[13px]" />
             </span>
           </div>
+        </Container>
+      </section>
+
+      {/* 신뢰 지표 */}
+      <section className="border-b border-neutral-200 bg-neutral-50 py-3">
+        <Container>
+          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5">
+            {trustBar.map((item) => (
+              <li key={item.label} className="flex items-center gap-1.5 text-[11px] font-medium text-neutral-600 sm:text-xs">
+                <item.icon className="h-3.5 w-3.5 shrink-0 text-amber-600" />
+                {item.label}
+              </li>
+            ))}
+          </ul>
         </Container>
       </section>
 
@@ -168,7 +216,7 @@ export default function Home() {
             서비스 바로가기
           </h2>
 
-          <div className="-mx-4 mt-5 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:snap-none sm:grid-cols-5 sm:gap-4 sm:overflow-visible sm:px-0">
+          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-5 sm:gap-4">
             {homeServices.map((service) => (
               <ServiceCard key={service.slug} service={service} />
             ))}
@@ -272,25 +320,17 @@ export default function Home() {
             </p>
 
             <ConsultButtons className="mt-4 !flex-row items-center justify-center [&>button]:flex-1 [&>button]:max-w-56 [&>button]:gap-1 [&>button]:px-2 [&>button]:text-sm sm:[&>button]:px-6 sm:[&>button]:text-base" />
-
-            <a
-              href={`tel:${siteConfig.phone.replace(/\s/g, "")}`}
-              className="mt-3 flex items-center justify-center gap-1.5 text-sm font-medium text-neutral-700 transition-colors hover:text-amber-600"
-            >
-              <PhoneIcon className="h-4 w-4" />
-              전화 상담 {siteConfig.phone}
-            </a>
           </div>
         </Container>
       </section>
 
-      {/* 실시간 후기 */}
+      {/* 이용 후기 */}
       <section id="review" className="border-t border-neutral-200 py-6 sm:py-14">
         <Container>
           <div className="flex items-center justify-between">
             <h2 className="flex items-center gap-2 text-lg font-bold text-neutral-900 sm:text-xl">
               <StarIcon className="h-5 w-5 text-amber-500" />
-              실시간 후기
+              이용 후기
             </h2>
             <SectionMore href="/review" />
           </div>

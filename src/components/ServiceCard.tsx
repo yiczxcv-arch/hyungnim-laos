@@ -7,7 +7,7 @@ export function ServiceCard({ service }: { service: HomeServiceTile }) {
   return (
     <Link
       href={service.href}
-      className="group flex w-28 shrink-0 snap-start flex-col items-center justify-center gap-1 rounded-2xl border border-neutral-200 px-2 py-3 text-center transition-colors hover:border-amber-300 hover:bg-amber-50/50 sm:w-auto sm:gap-1.5 sm:px-2.5 sm:py-3.5"
+      className="group flex w-full flex-col items-center justify-center gap-1 rounded-2xl border border-neutral-200 px-2 py-3 text-center transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-amber-300 hover:bg-amber-50/50 hover:shadow-md sm:gap-1.5 sm:px-2.5 sm:py-3.5"
     >
       {service.iconStyle === "badge" ? (
         <span

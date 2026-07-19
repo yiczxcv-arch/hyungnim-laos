@@ -59,7 +59,7 @@ export const homeServices: HomeServiceTile[] = [
     iconStyle: "plain",
     colorClassName: "text-amber-600",
     label: "에코 / 미팅",
-    description: "현지 미팅 & 에코 예약",
+    description: "현지 동행 서비스",
     href: "/eco",
   },
   {
@@ -86,7 +86,7 @@ export const homeServices: HomeServiceTile[] = [
     iconStyle: "plain",
     colorClassName: "text-amber-600",
     label: "골프",
-    description: "골프장 예약 & 패키지",
+    description: "골프장 예약",
     href: "/golf",
   },
   {
