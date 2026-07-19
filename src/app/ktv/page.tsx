@@ -42,7 +42,7 @@ const recommendedKtv = [
     image: "/images/banners/ktv-banner.png",
   },
   {
-    name: "골든",
+    name: "골드문",
     desc: "고급스러운 인테리어의 프라이빗 KTV",
     tags: ["넓은 공간", "프라이빗 룸", "쾌적한 시설"],
     image: "/images/services/service-ktv.png",

@@ -58,7 +58,7 @@ export type RecommendedItem = { id: string; name: string; description: string; i
 // TODO: Replace with real database. (operator/venue partner listings)
 export const recommendedKtv: RecommendedItem[] = [
   { id: "1", name: "VIP 라운지 KTV", description: "넓은 룸과 최신 음향 시설을 갖춘 프리미엄 KTV", image: "/images/services/service-ktv.png" },
-  { id: "2", name: "골든 나이트 KTV", description: "비엔티안 중심가에 위치한 인기 KTV", image: "/images/videos/video-ktv.png" },
+  { id: "2", name: "골드문 나이트 KTV", description: "비엔티안 중심가에 위치한 인기 KTV", image: "/images/videos/video-ktv.png" },
   { id: "3", name: "문라이트 KTV", description: "단체 모임에 적합한 대형 룸 보유", image: "/images/banners/ktv-banner.png" },
 ];
 
