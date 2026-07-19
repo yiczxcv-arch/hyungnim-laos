@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" width="640" height="480" role="img" aria-label="탓루앙 밤 풍경">
+  <defs>
+    <linearGradient id="skyTL" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0c1130"/>
+      <stop offset="60%" stop-color="#1c2454"/>
+      <stop offset="100%" stop-color="#3a2a5c"/>
+    </linearGradient>
+    <radialGradient id="glowTL" cx="50%" cy="62%" r="45%">
+      <stop offset="0%" stop-color="#ffd680" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffd680" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="480" fill="url(#skyTL)"/>
+  <g fill="#f5e6c8" opacity="0.85">
+    <circle cx="90" cy="70" r="1.6"/>
+    <circle cx="150" cy="110" r="1.2"/>
+    <circle cx="220" cy="55" r="1.4"/>
+    <circle cx="480" cy="80" r="1.6"/>
+    <circle cx="540" cy="120" r="1.2"/>
+    <circle cx="60" cy="160" r="1.2"/>
+    <circle cx="580" cy="60" r="1.4"/>
+  </g>
+  <rect width="640" height="480" fill="url(#glowTL)"/>
+  <!-- That Luang stupa silhouette -->
+  <g fill="#d9a441">
+    <rect x="290" y="330" width="60" height="90"/>
+    <rect x="270" y="310" width="100" height="24"/>
+    <rect x="300" y="270" width="40" height="44"/>
+    <rect x="285" y="250" width="70" height="24"/>
+    <rect x="305" y="205" width="30" height="49"/>
+    <polygon points="320,150 340,205 300,205"/>
+    <rect x="314" y="120" width="12" height="34"/>
+    <circle cx="320" cy="112" r="7"/>
+  </g>
+  <!-- side lotus bases -->
+  <g fill="#b9852f">
+    <path d="M230 420 h180 v14 h-180Z"/>
+    <path d="M215 400 q105 -26 210 0 v10 h-210Z"/>
+  </g>
+  <!-- courtyard lights -->
+  <g fill="#ffe7ad">
+    <circle cx="230" cy="420" r="3.5"/>
+    <circle cx="410" cy="420" r="3.5"/>
+    <circle cx="200" cy="440" r="3"/>
+    <circle cx="440" cy="440" r="3"/>
+  </g>
+  <rect x="0" y="440" width="640" height="40" fill="#0a0e26"/>
+  <ellipse cx="320" cy="440" rx="220" ry="12" fill="#ffd680" opacity="0.22"/>
+</svg>

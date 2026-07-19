@@ -65,6 +65,14 @@ export function ChatIcon({ className }: IconProps) {
   );
 }
 
+export function TelegramIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2 .01 7Z" />
+    </svg>
+  );
+}
+
 export function PlayIcon({ className }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -107,6 +115,14 @@ export function CheckIcon({ className }: IconProps) {
   );
 }
 
+export function CheckMiniIcon({ className }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3} strokeLinecap="round" strokeLinejoin="round" className={className}>
+      <path d="m5 13 4 4L19 7" />
+    </svg>
+  );
+}
+
 export function ChevronRightIcon({ className }: IconProps) {
   return (
     <svg {...base} className={className}>
@@ -119,6 +135,151 @@ export function PhoneIcon({ className }: IconProps) {
   return (
     <svg {...base} className={className}>
       <path d="M6 3h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2 2C10.5 19 5 13.5 4 6a2 2 0 0 1 2-3Z" />
+    </svg>
+  );
+}
+
+export function CarIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M4.5 16v-3.2a1.5 1.5 0 0 1 .18-.71L6.3 8.9A2 2 0 0 1 8.06 8h7.88a2 2 0 0 1 1.76.9l1.62 3.19a1.5 1.5 0 0 1 .18.71V16" />
+      <path d="M3.5 16h17v2.5a1 1 0 0 1-1 1H17a1 1 0 0 1-1-1V17H8v1.5a1 1 0 0 1-1 1H4.5a1 1 0 0 1-1-1V16Z" />
+      <circle cx="7.5" cy="16" r="1.3" />
+      <circle cx="16.5" cy="16" r="1.3" />
+    </svg>
+  );
+}
+
+export function UsersIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <circle cx="9" cy="8.5" r="3" />
+      <path d="M3.5 19a5.5 5.5 0 0 1 11 0" />
+      <path d="M15.5 6a3 3 0 0 1 0 5.8" />
+      <path d="M15 13.2c2.5.4 4.5 2.3 4.5 5.8" />
+    </svg>
+  );
+}
+
+export function UserIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <circle cx="12" cy="8.5" r="3.5" />
+      <path d="M4.5 19.5a7.5 7.5 0 0 1 15 0" />
+    </svg>
+  );
+}
+
+export function NewspaperIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <rect x="3.5" y="5" width="13" height="14" rx="1" />
+      <path d="M16.5 8.5h3a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1h-3" />
+      <path d="M6.5 8.5h7M6.5 11.5h7M6.5 14.5h4" />
+    </svg>
+  );
+}
+
+export function BadgeIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12 3.5l2 1.7 2.6-.3.9 2.5 2.3 1.3-.9 2.5.9 2.5-2.3 1.3-.9 2.5-2.6-.3-2 1.7-2-1.7-2.6.3-.9-2.5L4.2 13l.9-2.5-.9-2.5 2.3-1.3.9-2.5 2.6.3 2-1.7Z" />
+      <path d="m9.3 12.2 1.8 1.8 3.6-3.6" />
+    </svg>
+  );
+}
+
+export function EyeIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+export function CalendarIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <rect x="3.5" y="5" width="17" height="15" rx="1.5" />
+      <path d="M3.5 9.5h17" />
+      <path d="M8 3v3.5M16 3v3.5" />
+    </svg>
+  );
+}
+
+export function WavesIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M2 8c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0" />
+      <path d="M2 13c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0" />
+      <path d="M2 18c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0 3-1.5 4.5 0 3 1.5 4.5 0" />
+    </svg>
+  );
+}
+
+export function FlameIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12 3s-5 4.5-5 9.5a5 5 0 0 0 10 0c0-1.8-1-3-1.8-4 0 2-1.2 2.8-1.7 2 .8-2.5-.5-5-1.5-7.5Z" />
+    </svg>
+  );
+}
+
+export function UtensilsIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M6 3v7a2 2 0 0 0 2 2v9M6 3v7M6 3v7M9 3v7" />
+      <path d="M17 3c-1.5 0-2.5 1.5-2.5 4v4a2 2 0 0 0 2 2V3Z" />
+    </svg>
+  );
+}
+
+export function WifiIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M3 8.5a14 14 0 0 1 18 0" />
+      <path d="M6.2 12.2a9.5 9.5 0 0 1 11.6 0" />
+      <path d="M9.5 15.8a5 5 0 0 1 5 0" />
+      <circle cx="12" cy="19.5" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+export function SnowflakeIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12 2.5v19M4 7l16 10M20 7 4 17" />
+      <path d="M12 2.5 9.5 5M12 2.5 14.5 5M12 21.5 9.5 19M12 21.5 14.5 19" />
+      <path d="M4 7l3 .3M4 7l1-2.8M20 7l-3 .3M20 7l-1-2.8M4 17l3-.3M4 17l1 2.8M20 17l-3-.3M20 17l-1 2.8" />
+    </svg>
+  );
+}
+
+export function ShoppingBagIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M5.5 8h13l-1 12.5a1.5 1.5 0 0 1-1.5 1.5h-8a1.5 1.5 0 0 1-1.5-1.5L5.5 8Z" />
+      <path d="M8.5 8V6a3.5 3.5 0 0 1 7 0v2" />
+    </svg>
+  );
+}
+
+export function CoffeeIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M4.5 9h12v6.5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V9Z" />
+      <path d="M16.5 10.5H18a2.5 2.5 0 0 1 0 5h-1.5" />
+      <path d="M8 5.5c0-.8.7-1.1.7-2M11.5 5.5c0-.8.7-1.1.7-2" />
+    </svg>
+  );
+}
+
+export function MapPinIcon({ className }: IconProps) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12 21.5s7-6.5 7-12A7 7 0 0 0 5 9.5c0 5.5 7 12 7 12Z" />
+      <circle cx="12" cy="9.5" r="2.5" />
     </svg>
   );
 }

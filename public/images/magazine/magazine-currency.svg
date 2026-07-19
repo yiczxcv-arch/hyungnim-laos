@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-label="라오스 환전 및 물가">
+  <defs>
+    <linearGradient id="bgCur" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f4c3a"/>
+      <stop offset="100%" stop-color="#1c7a5c"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="400" fill="url(#bgCur)"/>
+  <!-- second note behind -->
+  <rect x="100" y="120" width="220" height="120" rx="10" fill="#dcefe4" opacity="0.85"/>
+  <!-- banknote -->
+  <g>
+    <rect x="60" y="150" width="220" height="120" rx="10" fill="#eadfb2"/>
+    <rect x="76" y="166" width="188" height="88" rx="4" fill="none" stroke="#b89a4e" stroke-width="2"/>
+    <circle cx="120" cy="210" r="26" fill="#cdb26a"/>
+    <text x="120" y="219" font-family="Arial, sans-serif" font-size="24" fill="#0f4c3a" text-anchor="middle" font-weight="700">₭</text>
+    <g stroke="#b89a4e" stroke-width="2">
+      <line x1="170" y1="188" x2="248" y2="188"/>
+      <line x1="170" y1="204" x2="248" y2="204"/>
+      <line x1="170" y1="220" x2="230" y2="220"/>
+    </g>
+  </g>
+  <!-- coins -->
+  <circle cx="300" cy="290" r="34" fill="#f4d67a" stroke="#c9a63f" stroke-width="3"/>
+  <circle cx="255" cy="300" r="24" fill="#e7c667" stroke="#c9a63f" stroke-width="3"/>
+  <text x="300" y="298" font-family="Arial, sans-serif" font-size="26" fill="#7a5a1c" text-anchor="middle" font-weight="700">₭</text>
+</svg>

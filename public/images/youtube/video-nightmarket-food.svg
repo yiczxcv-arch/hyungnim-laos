@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" width="640" height="360" role="img" aria-label="비엔티안 야시장 맛집 영상">
+  <defs>
+    <linearGradient id="bgFood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#241127"/>
+      <stop offset="60%" stop-color="#4a1f22"/>
+      <stop offset="100%" stop-color="#7a3418"/>
+    </linearGradient>
+    <radialGradient id="glowFood" cx="50%" cy="75%" r="55%">
+      <stop offset="0%" stop-color="#ffab5c" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ffab5c" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bgFood)"/>
+  <rect width="640" height="360" fill="url(#glowFood)"/>
+  <!-- food cart silhouette -->
+  <g fill="#1c0f12">
+    <rect x="200" y="230" width="240" height="18"/>
+    <rect x="220" y="180" width="200" height="55"/>
+    <path d="M210 180 320 130 430 180Z"/>
+    <rect x="230" y="248" width="16" height="50"/>
+    <rect x="394" y="248" width="16" height="50"/>
+  </g>
+  <!-- steam -->
+  <g stroke="#f5e3d0" stroke-width="4" fill="none" opacity="0.7" stroke-linecap="round">
+    <path d="M270 200 q-10 -18 0 -32 q10 -14 0 -30"/>
+    <path d="M320 195 q-10 -18 0 -32 q10 -14 0 -30"/>
+    <path d="M370 200 q-10 -18 0 -32 q10 -14 0 -30"/>
+  </g>
+  <!-- string lights -->
+  <g fill="#ffd27a">
+    <circle cx="60" cy="60" r="4"/>
+    <circle cx="130" cy="45" r="4"/>
+    <circle cx="200" cy="60" r="4"/>
+    <circle cx="440" cy="60" r="4"/>
+    <circle cx="510" cy="45" r="4"/>
+    <circle cx="580" cy="60" r="4"/>
+  </g>
+  <g stroke="#ffd27a" stroke-width="1.5" opacity="0.6" fill="none">
+    <path d="M30 55 Q130 15 230 55"/>
+    <path d="M410 55 Q510 15 610 55"/>
+  </g>
+  <rect x="0" y="298" width="640" height="62" fill="#180b0e"/>
+</svg>

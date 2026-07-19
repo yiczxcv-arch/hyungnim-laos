@@ -8,12 +8,12 @@ import { Container } from "@/components/container";
 import { ChatIcon } from "@/components/icons";
 
 const navCta =
-  "flex h-11 items-center gap-1.5 rounded-full border border-amber-500 bg-white px-5 text-sm font-semibold text-amber-600 transition-colors hover:bg-amber-50 active:bg-amber-100";
+  "flex h-10 items-center gap-1.5 rounded-full border border-amber-500 bg-white px-5 text-sm font-semibold text-amber-600 transition-colors hover:bg-amber-50 active:bg-amber-100";
 
 function Logo({ onClick }: { onClick?: () => void }) {
   return (
     <Link href="/" className="flex items-center gap-2.5" onClick={onClick}>
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-base font-bold text-amber-600">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border-2 border-amber-500 text-sm font-bold text-amber-600">
         형
       </span>
       <span className="flex flex-col leading-none">
@@ -30,7 +30,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-neutral-200 bg-white/95 backdrop-blur">
-      <Container className="flex h-20 items-center justify-between">
+      <Container className="flex h-16 items-center justify-between">
         <Logo onClick={() => setOpen(false)} />
 
         <nav className="hidden items-center gap-6 md:flex">
